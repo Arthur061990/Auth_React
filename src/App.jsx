@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; // se tiene que agregar este import y luego npm npm install react-router-dom
+import Perfil from './components/pages/perfil';
+import Registro from './components/pages/registro';
+import Ingreso from './components/pages/ingreso';
 
 function App() {
 
-  const [user, setUser] = useState([])
+  /*const [user, setUser] = useState([])
 
     const fetchData = () => {
       return axios.get("http://localhost:3000/")
@@ -20,12 +23,17 @@ function App() {
       fetchData()
     }
 
-    )
+    )*/
 
   return (
-      <div className="App">
-        <h1>Hola </h1>
-      </div>
+      
+        <BrowserRouter>
+          <Routes>
+            <Route path={"/ingreso"} element={<Ingreso />}/>
+            <Route path={"/registro"} element={<Registro />}/>
+            <Route path={"/perfil"} element={<Perfil />}/>
+          </Routes>
+        </BrowserRouter>
   )
 }
 
