@@ -1,0 +1,66 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff; /* Color de fondo azul */
+}
+
+.form-container-wrapper {
+    max-width: 500px;
+    width: 100%;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+    padding: 20px;
+    background-color: #007bff; /* Color de fondo azul */
+    border-radius: 15px;
+}
+
+.form-group {
+    margin-bottom: 0; /* Elimina el margen inferior entre los grupos */
+}
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffffff; /* Color de texto blanco */
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-text {
+    font-size: 0.85em;
+    color: #ffffff; /* Color de texto blanco */
+}
+
+.form-check-label {
+    margin-left: 10px;
+    color: #ffffff; /* Color de texto blanco */
+}
+
+.btn {
+    padding: 10px;
+    border: none;
+    background-color: #ffffff; /* Color de fondo blanco */
+    color: #007bff; /* Color de texto azul */
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #e0e0e0; /* Color de fondo gris claro al pasar el mouse */
+    color: #007bff; /* Color de texto azul */
+}
