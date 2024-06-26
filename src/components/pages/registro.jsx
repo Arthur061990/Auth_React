@@ -10,15 +10,22 @@ export default function Registro() {
     const formRef = useRef()
 
     const handleSubmit = (event) =>{
-        event.preventDefault()
+        //event.preventDefault()
         //const datos = Object.fromEntries(formData)
-        const formData = new FormData(formRef.current)
+        /*const formData = new FormData(formRef.current)
         console.log(formData)
         axios.post("http://localhost:3000/signup",{
-            username: "artussssraaaddo",
-            email: "ana@gmail.com",
+            username: "arantxa",
+            email: "arantxagt@gmail.com",
             password: "pantalla"
-        })
+        })*/
+            event.preventDefault();
+            const formData = new FormData(formRef.current);
+            const datos = Object.fromEntries(formData.entries());
+            console.log(datos);
+            axios.post("http://localhost:3000/signup", datos)
+                //.then(response => console.log(response))
+                //.catch(error => console.error('Error:', error));
 
     }
 
