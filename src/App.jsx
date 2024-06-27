@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'; // se tiene que
 import Perfil from './components/pages/perfil';
 import Registro from './components/pages/registro';
 import Ingreso from './components/pages/ingreso';
+import Home from './components/pages/home';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
       
         <BrowserRouter>
           <Routes>
+            <Route path={"/"} element={<Home />}/>
             <Route path={"/ingreso"} element={<Ingreso />}/>
             <Route path={"/registro"} element={<Registro />}/>
             <Route path={"/perfil"} element={<Perfil />}/>

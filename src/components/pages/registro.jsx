@@ -10,8 +10,24 @@ import axios from 'axios';
 export default function Registro() {
 
     const formRef = useRef()
+    const checkboxRef = useRef(null);
 
     const handleSubmit = (event) =>{
+
+    const form = formRef.current;
+    const email = form.elements.email.value;
+    const username = form.elements.username.value;
+    const password = form.elements.password.value;
+
+    if (!email || !username || !password) {
+      alert('Todos los campos son obligatorios.');
+      return;
+    }
+
+        if (!checkboxRef.current.checked) {
+            alert('Debes aceptar los términos y condiciones para registrarte.');
+            return;
+          }
         
             event.preventDefault();
             const formData = new FormData(formRef.current);
@@ -44,8 +60,12 @@ export default function Registro() {
                   <Form.Control type="password" name="password" />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" label="ACEPTO LOS TERMINOS Y CONDICIONES" />
-              </Form.Group>
+            <Form.Check
+              type="checkbox"
+              label="ACEPTO LOS TÉRMINOS Y CONDICIONES"
+              ref={checkboxRef}
+            />
+          </Form.Group>
               <Button variant="primary" type="submit">
                   REGISTRARME
               </Button>
