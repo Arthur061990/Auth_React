@@ -12,15 +12,7 @@ export default function Registro() {
     const formRef = useRef()
 
     const handleSubmit = (event) =>{
-        //event.preventDefault()
-        //const datos = Object.fromEntries(formData)
-        /*const formData = new FormData(formRef.current)
-        console.log(formData)
-        axios.post("http://localhost:3000/signup",{
-            username: "arantxa",
-            email: "arantxagt@gmail.com",
-            password: "pantalla"
-        })*/
+        
             event.preventDefault();
             const formData = new FormData(formRef.current);
             const datos = Object.fromEntries(formData.entries());
@@ -33,21 +25,19 @@ export default function Registro() {
 
     return (
       <div className="form-container-wrapper">
+        <h1>¡Registrate con nosotros!</h1>
       <div className="form-container">
+      
           <Form ref={formRef} onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>INGRESA TU CORREO ELECTRONICO</Form.Label>
                   <Form.Control type="email" name="email" />
-                  <Form.Text className="text-muted">
-                      Nunca mostraremos tu correo con nadie
-                  </Form.Text>
+                  
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicUsername">
                   <Form.Label>INGRESA TU NOMBRE DE USUARIO</Form.Label>
                   <Form.Control type="text" name="username" />
-                  <Form.Text className="text-muted">
-                      Nunca mostraremos tu username
-                  </Form.Text>
+                  
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                   <Form.Label>INGRESA LA CONTRASEÑA</Form.Label>

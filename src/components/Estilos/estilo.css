@@ -1,66 +1,67 @@
-body, html {
-    height: 100%;
-    margin: 0;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: #007bff; /* Color de fondo azul */
+    align-items: center;
+    height: 100vh;
+    m
+    
+    h1 {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }argin: 0;
 }
 
-.form-container-wrapper {
-    max-width: 500px;
-    width: 100%;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-.form-container {
+.container {
+    background-color: #fff;
     padding: 20px;
-    background-color: #007bff; /* Color de fondo azul */
-    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
 }
 
 .form-group {
-    margin-bottom: 0; /* Elimina el margen inferior entre los grupos */
+    margin-bottom: 15px;
+    text-align: left;
 }
 
-.form-label {
-    font-weight: bold;
+label {
+    display: block;
     margin-bottom: 5px;
-    color: #ffffff; /* Color de texto blanco */
+    font-weight: bold;
 }
 
-.form-control {
-    padding: 10px;
+input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
+    border-radius: 3px;
 }
 
-.form-text {
-    font-size: 0.85em;
-    color: #ffffff; /* Color de texto blanco */
-}
-
-.form-check-label {
-    margin-left: 10px;
-    color: #ffffff; /* Color de texto blanco */
-}
-
-.btn {
+button {
+    width: 100%;
     padding: 10px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    background-color: #ffffff; /* Color de fondo blanco */
-    color: #007bff; /* Color de texto azul */
-    font-size: 1rem;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 16px;
 }
 
-.btn:hover {
-    background-color: #e0e0e0; /* Color de fondo gris claro al pasar el mouse */
-    color: #007bff; /* Color de texto azul */
+button:hover {
+    background-color: #0056b3;
 }
