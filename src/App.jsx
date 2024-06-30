@@ -6,6 +6,8 @@ import Registro from './components/pages/registro';
 import Ingreso from './components/pages/ingreso';
 import Home from './components/pages/home';
 
+import AuthState from '../tools/auth.state';
+
 function App() {
 
   /*const [user, setUser] = useState([])
@@ -27,7 +29,7 @@ function App() {
     )*/
 
   return (
-      
+    <AuthState>
         <BrowserRouter>
           <Routes>
             <Route path={"/"} element={<Home />}/>
@@ -36,6 +38,7 @@ function App() {
             <Route path={"/perfil"} element={<Perfil />}/>
           </Routes>
         </BrowserRouter>
+    </AuthState>
   )
 }
 
