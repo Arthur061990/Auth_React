@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function useLocalStorage2(valorInicial, clave) {
+function useLocalStorage(valorInicial, clave) {
     const [almacenamiento, setAlmacenamiento] = useState(valorInicial);
 
     useEffect(function () {
@@ -40,4 +40,4 @@ function useLocalStorage2(valorInicial, clave) {
     return { almacenamiento, agregar, reemplazar };
 }
 
-export default useLocalStorage2;
+export default useLocalStorage;
