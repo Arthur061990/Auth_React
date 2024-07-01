@@ -6,7 +6,7 @@ import AuthContext from '../../../tools/auth.context';
 import '../Estilos/estilo.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function Ingreso() {
+export default function Modificar_Password() {
     const formRef = useRef();
     const authCtx = useContext(AuthContext);
 
@@ -32,7 +32,7 @@ export default function Ingreso() {
         axios.put("http://localhost:3000/modificar_password", datos, config)
             .then(response => {
                 console.log("EXITO", response.data);
-                authCtx.set(response.data.result);
+                //authCtx.set(response.data.result);
             })
             .catch(error => console.error('Error:', error));
     }
