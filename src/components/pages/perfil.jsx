@@ -1,4 +1,6 @@
 import React from 'react'
+import AuthContext from '../../../tools/auth.context';
+import { useContext, useEffect } from 'react';
 
 function Perfil() {
     return (

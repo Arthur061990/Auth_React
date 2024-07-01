@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import { useRef } from 'react';
 import '../Estilos/estilo.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AuthContext from '../../../tools/auth.context';
+import { useContext, useEffect } from 'react';
 
 import axios from 'axios';
 

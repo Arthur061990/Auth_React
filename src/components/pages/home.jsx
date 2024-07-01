@@ -1,5 +1,7 @@
 import React from 'react'
+import AuthContext from '../../../tools/auth.context';
 import { Link } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
 
 function Home() {
 
