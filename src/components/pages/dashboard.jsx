@@ -1,17 +1,40 @@
-import React from 'react';
-//import { Navbar, Nav, Form, FormControl, Button, Container, Row, Col, Card } from 'react-bootstrap';
-import '../Estilos/dashboard.css'; // Importa el archivo CSS específico
-//import React from 'react';
-import { Navbar, Nav, Form, FormControl, Button, Container, Row, Col, Card, Dropdown, DropdownButton } from 'react-bootstrap';
-//import './Perfil.css'; // Importa el archivo CSS específico
+import React, { useState, useEffect, useContext } from 'react';
+import { Navbar, Nav, Container, Row, Col, Card, Button, Dropdown, DropdownButton } from 'react-bootstrap';
+import axios from 'axios'; // Importa Axios
+import AuthContext from '../../../tools/auth.context'; // Asegúrate de importar correctamente el contexto de autenticación
 
-function Dashboard(){
+function Dashboard() {
     const usuario = "NombreUsuario"; // Reemplaza esto con el nombre del usuario real
-    const productos = [
-        { id: 1, nombre: 'Producto 1', descripcion: 'Descripción del producto 1', precio: '$10', imagen: 'https://via.placeholder.com/150' },
-        { id: 2, nombre: 'Producto 2', descripcion: 'Descripción del producto 2', precio: '$20', imagen: 'https://via.placeholder.com/150' },
-        // Añade más productos según sea necesario
-    ];
+    const [productos, setProductos] = useState([]);
+    const authCtx = useContext(AuthContext);
+    const token = authCtx.auth.token;
+
+    useEffect(() => {
+        if (!token) {
+            console.error('Token is undefined');
+            return;
+        }
+
+        const config = {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            }
+        };
+
+        // Función para obtener los productos desde el backend usando Axios
+        const obtenerProductosDesdeBackend = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/obtener_productos', config);
+                setProductos(response.data); // Actualiza el estado con los productos recibidos del backend
+            } catch (error) {
+                console.error('Error:', error);
+                // Manejo de errores, por ejemplo mostrar un mensaje al usuario
+            }
+        };
+
+        obtenerProductosDesdeBackend(); 
+    }, [token]); 
 
     return (
         <div id="perfil-container">
@@ -24,7 +47,6 @@ function Dashboard(){
                         <Nav.Link href="#productos">Productos</Nav.Link>
                         <Nav.Link href="#contacto">Contacto</Nav.Link>
                     </Nav>
-                    
                     <DropdownButton id="dropdown-basic-button" title={usuario} alignRight>
                         <Dropdown.Item href="/modificar_password">Cambiar Contraseña</Dropdown.Item>
                         <Dropdown.Item href="#pagar">Pagar</Dropdown.Item>
@@ -37,13 +59,13 @@ function Dashboard(){
                 <Container fluid>
                     <Row>
                         {productos.map(producto => (
-                            <Col key={producto.id} sm={12} md={6} lg={4} className="mb-4">
+                            <Col key={producto._id} sm={12} md={6} lg={4} className="mb-4">
                                 <Card>
                                     <Card.Img variant="top" src={producto.imagen} />
                                     <Card.Body>
                                         <Card.Title>{producto.nombre}</Card.Title>
                                         <Card.Text>{producto.descripcion}</Card.Text>
-                                        <Card.Text>{producto.precio}</Card.Text>
+                                        <Card.Text>{producto.costo}</Card.Text>
                                         <Button variant="primary">Comprar</Button>
                                     </Card.Body>
                                 </Card>
@@ -54,6 +76,6 @@ function Dashboard(){
             </div>
         </div>
     );
-};
+}
 
 export default Dashboard;
