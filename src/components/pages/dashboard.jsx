@@ -1,23 +1,29 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Navbar, Nav, Container, Row, Col, Card, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import axios from 'axios'; // Importa Axios
-import AuthContext from '../../../tools/auth.context'; // Asegúrate de importar correctamente el contexto de autenticación
+import AuthContext from '../../../tools/auth.context'; 
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
-    const usuario = "NombreUsuario"; // Reemplaza esto con el nombre del usuario real
+    const usuario = "NombreUsuario"; 
     const [productos, setProductos] = useState([]);
     const authCtx = useContext(AuthContext);
     const token = authCtx.auth.token;
 
+    const redirect = useNavigate()
+
+
     useEffect(() => {
-        if (!token) {
-            console.error('Token is undefined');
+        console.error('Token '+authCtx.auth.token);
+        if (!authCtx.auth.token) {
+            redirect('/') // path relativo, es decir lleva a la raiz independiente del puerto
+            console.error('Token is undefined: '+authCtx.auth.token);
             return;
         }
 
         const config = {
             headers: {
-                'Authorization': 'Bearer ' + token,
+                'Authorization': 'Bearer ' + authCtx.auth.token,
                 'Content-Type': 'application/json'
             }
         };
@@ -34,7 +40,13 @@ function Dashboard() {
         };
 
         obtenerProductosDesdeBackend(); 
-    }, [token]); 
+    }, [authCtx.auth.token]); 
+
+    function cerrar_sesion(){
+
+        authCtx.reset()
+
+    }
 
     return (
         <div id="perfil-container">
@@ -50,7 +62,7 @@ function Dashboard() {
                     <DropdownButton id="dropdown-basic-button" title={usuario} alignRight>
                         <Dropdown.Item href="/modificar_password">Cambiar Contraseña</Dropdown.Item>
                         <Dropdown.Item href="#pagar">Pagar</Dropdown.Item>
-                        <Dropdown.Item href="#cerrar-sesion">Cerrar sesión</Dropdown.Item>
+                        <Dropdown.Item href="#cerrar-sesion" onClick={cerrar_sesion}>Cerrar sesión</Dropdown.Item>
                     </DropdownButton>
                 </Navbar.Collapse>
             </Navbar>
