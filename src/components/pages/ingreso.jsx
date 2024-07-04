@@ -10,6 +10,7 @@ import { useContext, useEffect } from 'react';
 
 import axios from 'axios';
 import AuthContext from '../../../tools/auth.context';
+import { useNavigate } from 'react-router-dom';
 
 export default function Ingreso() {
 
@@ -17,10 +18,13 @@ export default function Ingreso() {
 
     const authCtx = useContext( AuthContext )
     
+    const redirect = useNavigate()
 
     const handleSubmit = (event) =>{
 
-    const form = formRef.current;
+        const form = formRef.current;
+
+    
     //const email = form.elements.email.value;
     //const password = form.elements.password.value;
 
@@ -39,6 +43,7 @@ export default function Ingreso() {
                 authCtx.set( response.data.result )
                 // Si la petición fue exitosa, se redirige al usuario a la página de login después de 5 segundos
                 //setTimeout(redirect, 5000, '/home')
+                redirect('/dashboard')
               })
                 .catch(error => console.error('Error:', error));
 

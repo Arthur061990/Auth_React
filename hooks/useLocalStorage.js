@@ -20,7 +20,7 @@ function useLocalStorage(valorInicial, clave) {
     // ejecutar cada vez que cambie el almacenamiento
     useEffect(() => {
         // es solo de ejemplo pero aqui se podria hacer algo con el almacenamiento
-        console.log('almacenamiento cambio');
+        console.log('almacenamiento cambio', almacenamiento);
     }, [almacenamiento]);
 
     // funcion para agregar un elemento al almacenamiento

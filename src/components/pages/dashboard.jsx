@@ -14,10 +14,9 @@ function Dashboard() {
 
 
     useEffect(() => {
-        console.error('Token '+authCtx.auth.token);
+        console.log('Token '+authCtx.auth.token);
         if (!authCtx.auth.token) {
             redirect('/') // path relativo, es decir lleva a la raiz independiente del puerto
-            console.error('Token is undefined: '+authCtx.auth.token);
             return;
         }
 
