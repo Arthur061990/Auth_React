@@ -11,20 +11,22 @@ import axios from 'axios';
 
 export default function Registro() {
 
+    const authCtx = useContext( AuthContext )
+
     const formRef = useRef()
     const checkboxRef = useRef(null);
 
     const handleSubmit = (event) =>{
 
-    const form = formRef.current;
-    const email = form.elements.email.value;
-    const username = form.elements.username.value;
-    const password = form.elements.password.value;
+      const form = formRef.current;
+      const email = form.elements.email.value;
+      const username = form.elements.username.value;
+      const password = form.elements.password.value;
 
-    if (!email || !username || !password) {
-      alert('Todos los campos son obligatorios.');
-      return;
-    }
+      if (!email || !username || !password) {
+        alert('Todos los campos son obligatorios.');
+        return;
+      }
 
         if (!checkboxRef.current.checked) {
             alert('Debes aceptar los términos y condiciones para registrarte.');
@@ -40,6 +42,12 @@ export default function Registro() {
                 //.catch(error => console.error('Error:', error));
 
     }
+
+    useEffect(() => {
+        if (authCtx.auth.token) {
+          redirect('/dashboard')
+        }
+    } , [authCtx.auth.token]);
 
     return (
       <div className="form-container-wrapper">

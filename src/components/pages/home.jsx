@@ -1,9 +1,12 @@
 import React from 'react'
 import AuthContext from '../../../tools/auth.context';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 
 function Home() {
+
+    const authCtx = useContext(AuthContext);
+    const redirect = useNavigate();
 
     const buttonStyle = {
         padding: '10px 20px',
@@ -11,6 +14,12 @@ function Home() {
         width: '150px', // Agrega un ancho fijo para asegurar que ambos botones tengan el mismo tamaño
         textAlign: 'center',
       };
+
+    useEffect(() => {
+        if (authCtx.auth.token) {
+          redirect('/dashboard')
+        }
+    } , [authCtx.auth.token]);
 
     return (
         <div style={{ textAlign: 'center', marginTop: '50px' }}>
