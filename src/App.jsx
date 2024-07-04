@@ -9,26 +9,10 @@ import Modifica_Password from './components/pages/modificar_password';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthState from '../tools/auth.state';
 import './components/Estilos/estilo.css'
+import Layout from './components/pages/layout';
 
 function App() {
 
-  /*const [user, setUser] = useState([])
-
-    const fetchData = () => {
-      return axios.get("http://localhost:3000/")
-      .then(data => {
-        console.log("Exito : "+data)
-      })
-      .catch(error => {
-        console.log("Error  ")
-      })
-    }
-
-    useEffect(()=>{
-      fetchData()
-    }
-
-    )*/
 
   return (
     <AuthState>
@@ -37,8 +21,10 @@ function App() {
             <Route path={"/"} element={<Home />}/>
             <Route path={"/ingreso"} element={<Ingreso />}/>
             <Route path={"/registro"} element={<Registro />}/>
-            <Route path={"/dashboard"} element={<Dashboard />}/>
-            <Route path={"/modificar_password"} element={<Modifica_Password />}/>
+            <Route element={<Layout />}>
+              <Route path={"/dashboard"} element={<Dashboard />}/>
+              <Route path={"/modificar_password"} element={<Modifica_Password />}/>
+            </Route>
           </Routes>
         </BrowserRouter>
     </AuthState>

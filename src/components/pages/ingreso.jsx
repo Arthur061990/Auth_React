@@ -25,8 +25,13 @@ export default function Ingreso() {
         const form = formRef.current;
 
     
-    //const email = form.elements.email.value;
-    //const password = form.elements.password.value;
+        const email = form.elements.email.value;
+        const password = form.elements.password.value;
+  
+        if (!email || !password) {
+          alert('Todos los campos son obligatorios.');
+          return;
+        }
 
          
         
@@ -66,10 +71,11 @@ export default function Ingreso() {
                   <Form.Label>INGRESA LA CONTRASEÑA</Form.Label>
                   <Form.Control type="password" name="password" />
               </Form.Group>
-             
+              <div className="button-container">
               <Button variant="primary" type="submit">
                   INGRESA
               </Button>
+              </div>
         </Form>
         </div>
       )

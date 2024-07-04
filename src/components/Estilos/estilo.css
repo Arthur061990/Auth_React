@@ -5,17 +5,16 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    m
-    
-    h1 {
-        margin-bottom: 20px;
-        font-size: 24px;
-    }
-    
-    .form-group {
-        margin-bottom: 15px;
-        text-align: left;
-    }argin: 0;
+    margin: 0;
+}
+
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff; /* Cambia este color según tu preferencia */
+    border-bottom: 1px solid #ccc; /* Añadir un borde en la parte inferior */
 }
 
 .container {
@@ -52,7 +51,7 @@ input {
 }
 
 button {
-    width: 100%;
+    width: auto
     padding: 10px;
     background-color: #007bff;
     color: #fff;
@@ -64,4 +63,12 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+.productos-container {
+    padding-top: 80px; /* Añadir padding para evitar que el contenido se superponga con la barra de navegación fija */
+}
+
+.button-container {
+    text-align: center; /* Centrar los botones horizontalmente */
 }

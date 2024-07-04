@@ -6,13 +6,14 @@ import '../Estilos/estilo.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContext from '../../../tools/auth.context';
 import { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
 export default function Registro() {
 
     const authCtx = useContext( AuthContext )
-
+    const redirect = useNavigate()
     const formRef = useRef()
     const checkboxRef = useRef(null);
 
@@ -49,6 +50,12 @@ export default function Registro() {
         }
     } , [authCtx.auth.token]);
 
+    function iniciar(){
+
+      redirect('/ingreso')
+
+  }
+
     return (
       <div className="form-container-wrapper">
         <h1>¡Registrate con nosotros!</h1>
@@ -76,9 +83,15 @@ export default function Registro() {
               ref={checkboxRef}
             />
           </Form.Group>
+          <div className="button-container">
               <Button variant="primary" type="submit">
                   REGISTRARME
               </Button>
+              <span style={{ margin: '0 10px', borderRight: '1px solid #ccc', height: 'auto' }}></span>
+              <Button variant="primary" onClick={iniciar}>
+                  INICIAR SESION
+              </Button>
+              </div>
           </Form>
       </div>
   </div>

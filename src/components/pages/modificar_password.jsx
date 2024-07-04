@@ -5,10 +5,12 @@ import axios from 'axios';
 import AuthContext from '../../../tools/auth.context';
 import '../Estilos/estilo.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Modificar_Password() {
     const formRef = useRef();
     const authCtx = useContext(AuthContext);
+    const redirect = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -32,6 +34,7 @@ export default function Modificar_Password() {
         axios.put("http://localhost:3000/modificar_password", datos, config)
             .then(response => {
                 console.log("EXITO", response.data);
+                redirect('/dashboard')
                 //authCtx.set(response.data.result);
             })
             .catch(error => console.error('Error:', error));
