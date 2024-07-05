@@ -7,7 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContext from '../../../tools/auth.context';
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import SweetAlertify from '../pages/sweetalertify';
+
+
 
 import axios from 'axios';
 
@@ -26,12 +28,12 @@ export default function Registro() {
       const password = form.elements.password.value;
 
       if (!email || !username || !password) {
-        alert('Todos los campos son obligatorios.');
+        SweetAlertify.showErrorAlert("Todos los campos son obligatorios.");
         return;
       }
 
         if (!checkboxRef.current.checked) {
-            alert('Debes aceptar los términos y condiciones para registrarte.');
+          SweetAlertify.showErrorAlert("Debes aceptar los términos y condiciones para registrarte.");
             return;
           }
         
@@ -41,9 +43,11 @@ export default function Registro() {
             console.log(datos);
             axios.post("http://localhost:3000/signup", datos)
                 .then(response => {
-                  toast.success("Usuario registrado correctamente")
+                  SweetAlertify.showSuccessAlert("Usuario registrado correctamente");
                 })
-                //.catch(error => console.error('Error:', error));
+                .catch(error => {
+                  SweetAlertify.showErrorAlert("Error al registrar usuario.");
+              });
 
     }
 
