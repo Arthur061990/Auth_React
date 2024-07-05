@@ -3,20 +3,21 @@ import { Navbar, Nav, Container, Row, Col, Card, Button, Dropdown, DropdownButto
 import axios from 'axios'; // Importa Axios
 import AuthContext from '../../../tools/auth.context'; 
 import { useNavigate } from 'react-router-dom';
+import CarritoContext from '../../../tools/carrito.context';
 
 function Dashboard() {
     const usuario = "NombreUsuario"; 
     const [productos, setProductos] = useState([]);
     const authCtx = useContext(AuthContext);
     const token = authCtx.auth.token;
+    const carritoCtx = useContext(CarritoContext); // Contexto del carrito
 
-    const redirect = useNavigate()
-
+    const redirect = useNavigate();
 
     useEffect(() => {
         console.log('Token '+authCtx.auth.token);
         if (!authCtx.auth.token) {
-            redirect('/') // path relativo, es decir lleva a la raiz independiente del puerto
+            redirect('/') // Redirige a la página de ingreso si no hay token
             return;
         }
 
@@ -34,17 +35,20 @@ function Dashboard() {
                 setProductos(response.data); 
             } catch (error) {
                 console.error('Error:', error);
-                
             }
         };
 
         obtenerProductosDesdeBackend(); 
-    }, [authCtx.auth.token]); 
+    }, [authCtx.auth.token, redirect]); 
+
+    // Función para agregar un producto al carrito
+    const agregarAlCarrito = (producto) => {
+        carritoCtx.agregar(producto); 
+        //toast.success(`Producto "${producto.producto}" agregado al carrito.`);
+    };
 
     function cerrar_sesion(){
-
-        authCtx.reset()
-
+        authCtx.reset();
     }
 
     return (
@@ -59,6 +63,7 @@ function Dashboard() {
                                     <Card.Title>{producto.nombre}</Card.Title>
                                     <Card.Text>{producto.descripcion}</Card.Text>
                                     <Card.Text>{producto.costo}</Card.Text>
+                                    <Button variant="primary" onClick={() => agregarAlCarrito(producto)}>Agregar</Button>
                                 </Card.Body>
                             </Card>
                         </Col>

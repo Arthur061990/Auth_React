@@ -9,12 +9,19 @@ const CarritoState = (props) => {
         estado: 'en proceso',
     };
 
+    const eliminarProducto = (id) => {
+        console.log(id)
+        const nuevosProductos = storage.almacenamiento.filter(producto => producto._id !== id);
+        console.log(nuevosProductos)
+        storage.reemplazar(nuevosProductos);
+    };
+
     return (
         <CarritoContext.Provider
             value={{
                 productos: initialState.productos,
                 agregar: storage.agregar,
-                eliminar: () => {}
+                eliminar: eliminarProducto
             }}
         >
             {props.children}

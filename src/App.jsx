@@ -6,6 +6,7 @@ import Registro from './components/pages/registro';
 import Ingreso from './components/pages/ingreso';
 import Home from './components/pages/home';
 import Contacto from './components/pages/contacto';
+import Productos from './components/pages/productos';
 import Modifica_Password from './components/pages/modificar_password';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthState from '../tools/auth.state';
@@ -13,6 +14,7 @@ import './components/Estilos/estilo.css'
 import Layout from './components/pages/layout';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CarritoState from "../tools/carrito.state"; 
 
 function App() {
 
@@ -20,7 +22,7 @@ function App() {
   return (
    
     <AuthState>
-    
+      <CarritoState> 
         <BrowserRouter>
         <ToastContainer />
           <Routes>
@@ -31,11 +33,11 @@ function App() {
               <Route path={"/dashboard"} element={<Dashboard />}/>
               <Route path={"/modificar_password"} element={<Modifica_Password />}/>
               <Route path={"/contacto"} element={<Contacto/>}/>
+              <Route path={"/productos"} element={<Productos/>}/>
             </Route>
           </Routes>
-          
         </BrowserRouter>
-        
+        </CarritoState>
     </AuthState>
   
    

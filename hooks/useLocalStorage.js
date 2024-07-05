@@ -26,6 +26,7 @@ function useLocalStorage(valorInicial, clave) {
     // funcion para agregar un elemento al almacenamiento
     function agregar(elemento) {
         // actualizar el local storage con el nuevo elemento
+        console.log(elemento)
         localStorage.setItem(clave, JSON.stringify([...almacenamiento, elemento]));
         // actualizar el estado del almacenamiento
         setAlmacenamiento([...almacenamiento, elemento]);
