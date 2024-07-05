@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-
 import CarritoContext from "../../../tools/carrito.context";
-
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import useLocalStorage from '../../../hooks/useLocalStorage';
 
 import '../Estilos/estilo.css'; 
 
@@ -16,6 +15,9 @@ function Productos() {
     console.log("ID: "+id_producto)
   };
 
+
+   
+
   return (
     <Container fluid className="productos-container">
       <h2 className="mt-4 mb-4">Productos en tu Carrito:</h2>
@@ -27,7 +29,7 @@ function Productos() {
                 className="btn-eliminar"
                 onClick={() => handleEliminarProducto(producto._id)}
               >
-                X
+                eliminar
               </Button>
               <Card.Img variant="top" src={producto.imagen} />
               <Card.Body>
