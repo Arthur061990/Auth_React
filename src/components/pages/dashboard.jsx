@@ -31,10 +31,10 @@ function Dashboard() {
         const obtenerProductosDesdeBackend = async () => {
             try {
                 const response = await axios.get('http://localhost:3000/obtener_productos', config);
-                setProductos(response.data); // Actualiza el estado con los productos recibidos del backend
+                setProductos(response.data); 
             } catch (error) {
                 console.error('Error:', error);
-                // Manejo de errores, por ejemplo mostrar un mensaje al usuario
+                
             }
         };
 
@@ -59,7 +59,6 @@ function Dashboard() {
                                     <Card.Title>{producto.nombre}</Card.Title>
                                     <Card.Text>{producto.descripcion}</Card.Text>
                                     <Card.Text>{producto.costo}</Card.Text>
-                                    <Button variant="primary">Comprar</Button>
                                 </Card.Body>
                             </Card>
                         </Col>

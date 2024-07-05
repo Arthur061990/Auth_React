@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContext from '../../../tools/auth.context';
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import axios from 'axios';
 
@@ -39,7 +40,9 @@ export default function Registro() {
             const datos = Object.fromEntries(formData.entries());
             console.log(datos);
             axios.post("http://localhost:3000/signup", datos)
-                //.then(response => console.log(response))
+                .then(response => {
+                  toast.success("Usuario registrado correctamente")
+                })
                 //.catch(error => console.error('Error:', error));
 
     }
