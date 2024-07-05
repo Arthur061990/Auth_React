@@ -25,7 +25,7 @@ function App() {
     <AuthState>
       
       <CarritoState> 
-      <Toastify/> 
+      
         <BrowserRouter>
           <Routes>
             <Route path={"/"} element={<Home />}/>

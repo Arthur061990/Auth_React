@@ -31,12 +31,12 @@ export default function Registro() {
       const password = form.elements.password.value;
 
       if (!email || !username || !password) {
-        toast.success("hola")
+        alert('Todos los campos son obligatorios.');
         return;
       }
 
         if (!checkboxRef.current.checked) {
-          SweetAlertify.showErrorAlert("Debes aceptar los términos y condiciones para registrarte.");
+          alert('Debes aceptar terminos y condiciones');
             return;
           }
         
@@ -46,10 +46,11 @@ export default function Registro() {
             console.log(datos);
             axios.post("http://localhost:3000/signup", datos)
                 .then(response => {
-                  SweetAlertify.showSuccessAlert("Usuario registrado correctamente");
+                  alert('Usuario Registrado Correctamente');
+                  redirect('/ingreso')
                 })
                 .catch(error => {
-                  SweetAlertify.showErrorAlert("Error al registrar usuario.");
+                  alert('Error al Registrar Usuario');
               });
 
     }
