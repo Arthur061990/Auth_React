@@ -13,7 +13,8 @@ import Layout from './components/pages/layout';
 //import { ToastContainer } from 'react-toastify';
 //import 'react-toastify/dist/ReactToastify.css';
 import CarritoState from "../tools/carrito.state"; 
-import SweetAlertify from '../src/components/pages/sweetalertify';
+import Toastify from '../src/components/pages/toastify';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -24,8 +25,8 @@ function App() {
     <AuthState>
       
       <CarritoState> 
+      <Toastify/> 
         <BrowserRouter>
-        <SweetAlertify />
           <Routes>
             <Route path={"/"} element={<Home />}/>
             <Route path={"/ingreso"} element={<Ingreso />}/>
@@ -38,6 +39,7 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
+       
         </CarritoState>
     </AuthState>
   

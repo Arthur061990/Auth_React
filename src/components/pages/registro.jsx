@@ -1,13 +1,14 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useRef } from 'react';
+import { useRef, useContext, useState, useEffect } from 'react';
 import '../Estilos/estilo.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContext from '../../../tools/auth.context';
-import { useContext, useEffect } from 'react';
+//import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SweetAlertify from '../pages/sweetalertify';
+import { toast } from "react-toastify";
+
 
 
 
@@ -19,6 +20,8 @@ export default function Registro() {
     const redirect = useNavigate()
     const formRef = useRef()
     const checkboxRef = useRef(null);
+    
+    const toastRef = useRef(); // Referencia para Toastify
 
     const handleSubmit = (event) =>{
 
@@ -28,7 +31,7 @@ export default function Registro() {
       const password = form.elements.password.value;
 
       if (!email || !username || !password) {
-        SweetAlertify.showErrorAlert("Todos los campos son obligatorios.");
+        toast.success("hola")
         return;
       }
 
