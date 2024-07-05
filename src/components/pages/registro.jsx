@@ -2,8 +2,8 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useRef, useContext, useState, useEffect } from 'react';
-import '../Estilos/estilo.css'; 
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import '../Estilos/estilo.css'; 
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContext from '../../../tools/auth.context';
 //import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +21,7 @@ export default function Registro() {
     const formRef = useRef()
     const checkboxRef = useRef(null);
     
-    const toastRef = useRef(); // Referencia para Toastify
+   
 
     const handleSubmit = (event) =>{
 
@@ -31,7 +31,9 @@ export default function Registro() {
       const password = form.elements.password.value;
 
       if (!email || !username || !password) {
-        alert('Todos los campos son obligatorios.');
+        //toast.success("Todos los campos son obligatorios.")
+        toast("Todos los campos son obligatorios.")
+        //alert('Todos los campos son obligatorios.');
         return;
       }
 

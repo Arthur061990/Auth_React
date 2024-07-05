@@ -13,22 +13,22 @@ body {
     position: fixed;
     top: 0;
     z-index: 1000;
-    background-color: #fff; /* Cambia este color según tu preferencia */
-    border-bottom: 1px solid #ccc; /* Añadir un borde en la parte inferior */
+    background-color: #fff; 
+    border-bottom: 1px solid #ccc; 
 }
 
 .navbar .badge {
-    background-color: #dc3545; /* Rojo Bootstrap */
+    background-color: #dc3545; 
     border-radius: 50%;
-    padding: 0.2em 0.4em; /* Menos padding para un estilo más minimalista */
+    padding: 0.2em 0.4em; 
     color: white;
-    font-size: 0.75em; /* Un poco más pequeño */
+    font-size: 0.75em; 
     line-height: 1;
     display: inline-block;
-    min-width: 1.2em; /* Un poco más pequeño */
+    min-width: 1.2em; 
     text-align: center;
-    font-weight: 500; /* Un poco más de peso para una mejor legibilidad */
-    margin-left: 0.5em; /* Espacio entre el ícono y el número */
+    font-weight: 500; 
+    margin-left: 0.5em; 
 }
 .container {
     background-color: #fff;
@@ -79,9 +79,9 @@ button:hover {
 }
 
 .productos-container {
-    padding-top: 80px; /* Añadir padding para evitar que el contenido se superponga con la barra de navegación fija */
+    padding-top: 80px; 
 }
 
 .button-container {
-    text-align: center; /* Centrar los botones horizontalmente */
+    text-align: center;
 }

@@ -21,27 +21,30 @@ function App() {
 
 
   return (
-    
-    <AuthState>
-      
-      <CarritoState> 
-      
-        <BrowserRouter>
-          <Routes>
-            <Route path={"/"} element={<Home />}/>
-            <Route path={"/ingreso"} element={<Ingreso />}/>
-            <Route path={"/registro"} element={<Registro />}/>
-            <Route element={<Layout />}>
-              <Route path={"/dashboard"} element={<Dashboard />}/>
-              <Route path={"/modificar_password"} element={<Modifica_Password />}/>
-              <Route path={"/contacto"} element={<Contacto/>}/>
-              <Route path={"/productos"} element={<Productos/>}/>
-            </Route>
-          </Routes>
-        </BrowserRouter>
-       
-        </CarritoState>
-    </AuthState>
+    <>
+      <Toastify />
+      <AuthState>
+        
+        <CarritoState> 
+        
+          <BrowserRouter>
+            <Routes>
+            
+              <Route path={"/"} element={<Home />}/>
+              <Route path={"/ingreso"} element={<Ingreso />}/>
+              <Route path={"/registro"} element={<Registro />}/>
+              <Route element={<Layout />}>
+                <Route path={"/dashboard"} element={<Dashboard />}/>
+                <Route path={"/modificar_password"} element={<Modifica_Password />}/>
+                <Route path={"/contacto"} element={<Contacto/>}/>
+                <Route path={"/productos"} element={<Productos/>}/>
+              </Route>
+            </Routes>
+          </BrowserRouter>
+          
+          </CarritoState>
+      </AuthState>
+    </>
   
    
     

@@ -13,7 +13,7 @@ function Toastify(props) {
         pauseOnFocusLoss={false}
         draggable
         pauseOnHover={false}
-        theme="colored"
+        
     />
   )
 }
