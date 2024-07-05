@@ -17,6 +17,19 @@ body {
     border-bottom: 1px solid #ccc; /* Añadir un borde en la parte inferior */
 }
 
+.navbar .badge {
+    background-color: #dc3545; /* Rojo Bootstrap */
+    border-radius: 50%;
+    padding: 0.2em 0.4em; /* Menos padding para un estilo más minimalista */
+    color: white;
+    font-size: 0.75em; /* Un poco más pequeño */
+    line-height: 1;
+    display: inline-block;
+    min-width: 1.2em; /* Un poco más pequeño */
+    text-align: center;
+    font-weight: 500; /* Un poco más de peso para una mejor legibilidad */
+    margin-left: 0.5em; /* Espacio entre el ícono y el número */
+}
 .container {
     background-color: #fff;
     padding: 20px;
