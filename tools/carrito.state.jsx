@@ -5,14 +5,34 @@ const CarritoState = (props) => {
     const storage = useLocalStorage([], 'carrito');
 
     const initialState = {
-        productos: storage.almacenamiento,
+        productos: storage.almacenamiento.map(producto => ({
+            ...producto,
+            cantidad: producto.cantidad || 1
+        })),
         estado: 'en proceso',
     };
 
+    const agregarProducto = (producto) => {
+        const nuevosProductos = [...storage.almacenamiento];
+        const productoExistente = nuevosProductos.find(p => p._id === producto._id);
+
+        if (productoExistente) {
+            productoExistente.cantidad++;
+        } else {
+            nuevosProductos.push({ ...producto, cantidad: 1 });
+        }
+
+        storage.reemplazar(nuevosProductos);
+    };
+
     const eliminarProducto = (id) => {
-        console.log(id)
-        const nuevosProductos = storage.almacenamiento.filter(producto => producto._id !== id);
-        console.log(nuevosProductos)
+        const nuevosProductos = storage.almacenamiento.map(producto => {
+            if (producto._id === id) {
+                return { ...producto, cantidad: producto.cantidad - 1 };
+            }
+            return producto;
+        }).filter(producto => producto.cantidad > 0);
+
         storage.reemplazar(nuevosProductos);
     };
 
@@ -20,7 +40,7 @@ const CarritoState = (props) => {
         <CarritoContext.Provider
             value={{
                 productos: initialState.productos,
-                agregar: storage.agregar,
+                agregar: agregarProducto,
                 eliminar: eliminarProducto
             }}
         >

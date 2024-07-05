@@ -1,22 +1,18 @@
 import React, { useContext } from "react";
 import CarritoContext from "../../../tools/carrito.context";
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import useLocalStorage from '../../../hooks/useLocalStorage';
-
 import '../Estilos/estilo.css'; 
 
 function Productos() {
-  
+  const { productos, agregar, eliminar } = useContext(CarritoContext);
 
-  const { productos, eliminar } = useContext(CarritoContext);
-
-  const handleEliminarProducto = (id_producto) => {
-    eliminar(id_producto); 
-    console.log("ID: "+id_producto)
+  const handleAgregarProducto = (producto) => {
+    agregar(producto);
   };
 
-
-   
+  const handleEliminarProducto = (id_producto) => {
+    eliminar(id_producto);
+  };
 
   return (
     <Container fluid className="productos-container">
@@ -35,7 +31,13 @@ function Productos() {
               <Card.Body>
                 <Card.Title>{producto.producto}</Card.Title>
                 <Card.Text>Precio: ${producto.costo}</Card.Text>
-                <Card.Title>Total  :{localStorage.length}</Card.Title>
+                <Card.Text>Cantidad: {producto.cantidad}</Card.Text>
+                <Button
+                  className="btn-agregar"
+                  onClick={() => handleAgregarProducto(producto)}
+                >
+                  agregar
+                </Button>
               </Card.Body>
             </Card>
           </Col>
@@ -46,3 +48,4 @@ function Productos() {
 }
 
 export default Productos;
+
